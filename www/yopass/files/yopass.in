@@ -1,0 +1,91 @@
+#!/bin/sh
+
+# PROVIDE: yopass
+# REQUIRE: LOGIN NETWORKING
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf to run yopass:
+#
+# yopass_enable (bool):			Set it to "YES" to enable yopass server.
+# 					Default is "NO".
+# yopass_flags (flags):			Set extra flags here. More options in yopass-server --help
+#					Default is empty "".
+# yopass_database_type (str):		Set backing database for yopass.
+#					Default is "memcached".
+# yopass_database_uri (str):		Set database URI for yopass.
+#					Default is "localhost:11211".
+# yopass_syslog_output_enable (bool):	Set it to "YES" for enabling output to syslogd(8)
+#					Default is "NO"
+# yopass_syslog_output_priority (str):	Set logging priority.
+#					Default is "info"
+# yopass_syslog_output_facility (str):	Set logging facility
+#					Default is "daemon"
+
+. /etc/rc.subr
+
+name=yopass
+rcvar=yopass_enable
+
+load_rc_config ${name}
+
+: ${yopass_enable:="NO"}
+: ${yopass_asset_path:="%%WWWDIR%%"}
+: ${yopass_flags:=""}
+: ${yopass_database_type:="memcached"}
+: ${yopass_database_uri:="localhost:11211"}
+: ${yopass_syslog_output_enable:="NO"}
+: ${yopass_syslog_output_priority:="info"}
+: ${yopass_syslog_output_facility:="daemon"}
+
+if checkyesno yopass_syslog_output_enable; then
+	yopass_syslog_output_flags="-t ${name} -T ${name}"
+
+	if [ -n "${yopass_syslog_output_priority}" ]; then
+		yopass_syslog_output_flags="${yopass_syslog_output_flags} -s ${yopass_syslog_output_priority}"
+	fi
+
+	if [ -n "${yopass_syslog_output_facility}" ]; then
+		yopass_syslog_output_flags="${yopass_syslog_output_flags} -l ${yopass_syslog_output_facility}"
+	fi
+fi
+
+if [ -z "${yopass_flags}" ]; then
+	yopass_flags="--port 80 --log-level info"
+fi
+
+if [ ${yopass_database_type} == "memcached" ]; then
+	yopass_flags="${yopass_flags} --memcached ${yopass_database_uri}"
+fi
+
+if [ ${yopass_database_type} == "redis" ]; then
+	yopass_flags="${yopass_flags} --redis ${yopass_database_uri}"
+fi    
+
+
+db_pidfile=/var/run/${yopass_database_type}/${yopass_database_type}.pid
+pidfile=/var/run/yopass/${name}.pid
+procname="%%WWWDIR%%/${name}-server"
+
+start_cmd="${name}_start"
+start_precmd="${name}_precmd"
+
+yopass_precmd()
+{
+	if [ ! -f ${db_pidfile} ]
+	then
+		echo ${yopass_database_type} not running for yopass backend!
+		return 1
+	fi
+}
+
+yopass_start() {
+        echo "Starting yopass server."
+        /usr/sbin/daemon -f ${yopass_syslog_output_flags} -p ${pidfile} \
+                /usr/bin/env -i \
+                "PATH=%%PREFIX%%/bin:${PATH}" \
+                ${procname} ${yopass_flags}
+}
+
+cd ${yopass_asset_path}
+
+run_rc_command "$1"
