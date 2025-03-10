@@ -7,6 +7,8 @@ You can find `yopass` [here][1]
 
 NOTE: This is a WIP package and has not been committed to FreeBSD ports.
 
+> Adds asset path config support via https://github.com/jhaals/yopass/pull/2577
+
 Installation
 ------------
 
