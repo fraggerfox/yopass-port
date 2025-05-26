@@ -2,11 +2,11 @@ bin/yopass
 bin/yopass-server
 etc/rc.d/yopass
 %%WWWDIR%%/public/_redirects
-%%WWWDIR%%/public/assets/browser-ponyfill-vWqHzn-V.js
-%%WWWDIR%%/public/assets/browser-ponyfill-vWqHzn-V.js.map
+%%WWWDIR%%/public/assets/browser-ponyfill-JACPZ65_.js
+%%WWWDIR%%/public/assets/browser-ponyfill-JACPZ65_.js.map
 %%WWWDIR%%/public/assets/index-B1qGElgd.css
-%%WWWDIR%%/public/assets/index-Wy2OmfdS.js
-%%WWWDIR%%/public/assets/index-Wy2OmfdS.js.map
+%%WWWDIR%%/public/assets/index-eol_BJFf.js
+%%WWWDIR%%/public/assets/index-eol_BJFf.js.map
 %%WWWDIR%%/public/assets/roboto-cyrillic-300-normal-BoeCr7ev.woff2
 %%WWWDIR%%/public/assets/roboto-cyrillic-300-normal-brFHmz5Z.woff
 %%WWWDIR%%/public/assets/roboto-cyrillic-400-normal-DAIM1_dR.woff2
@@ -75,6 +75,7 @@ etc/rc.d/yopass
 %%WWWDIR%%/public/favicon-32x32.png
 %%WWWDIR%%/public/favicon.ico
 %%WWWDIR%%/public/favicon.png
+%%WWWDIR%%/public/index.css
 %%WWWDIR%%/public/index.html
 %%WWWDIR%%/public/locales/en.json
 %%WWWDIR%%/public/manifest.json

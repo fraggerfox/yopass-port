@@ -1,16 +1,18 @@
 PORTNAME=	yopass
-PORTVERSION=	${GH_TAG}.g20250411
-CATEGORIES=	 wip www textproc
-MASTER_SITES=	https://raw.githubusercontent.com/${GH_ACCOUNT}/${GH_PROJECT}/${GH_TAG}/${WRKSRC_SUBDIR:?${WRKSRC_SUBDIR}/:} \
+PORTVERSION=	${GH_TAG}.g20250523
+CATEGORIES=	wip www textproc
+MASTER_SITES=	https://raw.githubusercontent.com/jhaals/yopass/refs/heads/master/:go \
 		https://codeload.github.com/${GH_ACCOUNT}/${GH_PROJECT}/tar.gz/${GH_TAG}?dummy=/ \
 		LOCAL/fox/:js
 DISTFILES=	${GH_PROJECT}-${GH_TAG}-node_modules.tgz:js \
-		${GH_ACCOUNT}-${GH_PROJECT}-${GH_TAG}_GH0.tar.gz
+		${GH_ACCOUNT}-${GH_PROJECT}-${GH_TAG}_GH0.tar.gz \
+		go.mod:go
 
-#DISTFILES=	${GH_ACCOUNT}-${GH_PROJECT}-${GH_TAG}_GH0.tar.gz
+#DISTFILES=	${GH_ACCOUNT}-${GH_PROJECT}-${GH_TAG}_GH0.tar.gz \
+#		go.mod:go
 
-PATCH_SITES=	https://github.com/fraggerfox/${GH_PROJECT}/commit/
-PATCHFILES=	58f4f9d69b8f2d358202a9d673afa897b68689ca.patch:-p1
+PATCH_SITES=	https://github.com/jhaals/${GH_PROJECT}/compare/
+PATCHFILES=	11.20.0...master.patch:-p1
 
 MAINTAINER=	fox@FreeBSD.org
 COMMENT=	Share secrets securely with ease
@@ -25,13 +27,13 @@ BROKEN_i386=	fails to build
 BUILD_DEPENDS=	yarn${NODEJS_SUFFIX}>=0:www/yarn${NODEJS_SUFFIX}
 RUN_DEPENDS=	${LOCALBASE}/bin/memcached:databases/memcached
 
-USES=		go:1.23,modules nodejs:20,build
+USES=		go:1.24,modules nodejs:20,build
 USE_RC_SUBR=	yopass
 
 USE_GITHUB=	nodefault
 GH_ACCOUNT=	jhaals
 GH_PROJECT=	yopass
-GH_TAG=		11.19.1
+GH_TAG=		11.20.0
 
 GO_MODULE=	github.com/jhaals/yopass
 GO_MOD_DIST=	github
