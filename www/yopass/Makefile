@@ -1,28 +1,21 @@
 PORTNAME=	yopass
-PORTVERSION=	${GH_TAG}.g20250523
+PORTVERSION=	12.4.0
 CATEGORIES=	wip www textproc
-MASTER_SITES=	https://raw.githubusercontent.com/jhaals/yopass/refs/heads/master/:go \
+MASTER_SITES=	https://raw.githubusercontent.com/jhaals/yopass/refs/tags/12.4.0/:go \
 		https://codeload.github.com/${GH_ACCOUNT}/${GH_PROJECT}/tar.gz/${GH_TAG}?dummy=/ \
 		LOCAL/fox/:js
-DISTFILES=	${GH_PROJECT}-${GH_TAG}-node_modules.tgz:js \
-		${GH_ACCOUNT}-${GH_PROJECT}-${GH_TAG}_GH0.tar.gz \
+DISTFILES=	${GH_ACCOUNT}-${GH_PROJECT}-${GH_TAG}_GH0.tar.gz \
+		${GH_PROJECT}-${GH_TAG}-node_modules.tgz:js \
 		go.mod:go
-
-#DISTFILES=	${GH_ACCOUNT}-${GH_PROJECT}-${GH_TAG}_GH0.tar.gz \
-#		go.mod:go
-
-PATCH_SITES=	https://github.com/jhaals/${GH_PROJECT}/compare/
-PATCHFILES=	11.20.0...master.patch:-p1
 
 MAINTAINER=	fox@FreeBSD.org
 COMMENT=	Share secrets securely with ease
 WWW=		https://yopass.se/
 
-CONFLICTS_INSTALL=	yopass
+#CONFLICTS_INSTALL=	yopass
 LICENSE=	APACHE20
 
-BROKEN_aarch64=	fails to build
-BROKEN_i386=	fails to build
+ONLY_FOR_ARCHS=	amd64
 
 BUILD_DEPENDS=	yarn${NODEJS_SUFFIX}>=0:www/yarn${NODEJS_SUFFIX}
 RUN_DEPENDS=	${LOCALBASE}/bin/memcached:databases/memcached
@@ -33,12 +26,12 @@ USE_RC_SUBR=	yopass
 USE_GITHUB=	nodefault
 GH_ACCOUNT=	jhaals
 GH_PROJECT=	yopass
-GH_TAG=		11.20.0
+GH_TAG=		${PORTVERSION}
 
 GO_MODULE=	github.com/jhaals/yopass
-GO_MOD_DIST=	github
 GO_TARGET=	./cmd/yopass ./cmd/yopass-server
-WRKSRC=		${WRKDIR}/${GH_PROJECT}-${GH_TAG}
+GO_ENV+=	GOTOOLCHAIN=local+path
+GO_MOD_DIST=	github
 
 post-extract:
 	@${RLN} ${WRKDIR}/node_modules ${WRKSRC}/website/node_modules
@@ -54,12 +47,12 @@ do-install:
 
 post-install:
 	${MKDIR} ${STAGEDIR}${WWWDIR}/public
-	cd ${WRKSRC}/website/build && ${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR}/public/
+	cd ${WRKSRC}/website/dist && ${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR}/public/
 	${MKDIR} ${STAGEDIR}/var/run/${PORTNAME}
 
 #
-# To update the opengist-${DISTVERSION}-node_modules.tgz archive:
-# 1. Comment out the DISTFILES and post-extract lines
+# To update the opengist-${GH_TAG}-node_modules.tgz archive:
+# 1. Comment out the *-node_modules.tar.gz in DISTFILES and post-extract lines
 # 2. Run 'make makesum regenerate-node_modules-distfile clean'
 # 3. Upload the archive
 # 4. Uncomment the lines from step #1

@@ -1,9 +1,7 @@
-TIMESTAMP = 1748242373
-SHA256 (go/wip_yopass/yopass-11.20.0.g20250523/yopass-11.20.0-node_modules.tgz) = a41f2d2b4ca45d96ff23e3397c201a5ad313477ff42b30f6a8f8f211e1b06162
-SIZE (go/wip_yopass/yopass-11.20.0.g20250523/yopass-11.20.0-node_modules.tgz) = 44432333
-SHA256 (go/wip_yopass/yopass-11.20.0.g20250523/jhaals-yopass-11.20.0_GH0.tar.gz) = e171042c8dcbce2e92242b1cb33f7c1061f9b043fc3f3837e91682d4acc35b4f
-SIZE (go/wip_yopass/yopass-11.20.0.g20250523/jhaals-yopass-11.20.0_GH0.tar.gz) = 1387400
-SHA256 (go/wip_yopass/yopass-11.20.0.g20250523/go.mod) = 3e7560b420a52bcac506c9dd65b9c0487ad0551b85f1d8b318950e3bd1863ada
-SIZE (go/wip_yopass/yopass-11.20.0.g20250523/go.mod) = 1679
-SHA256 (go/wip_yopass/yopass-11.20.0.g20250523/11.20.0...master.patch) = 1a5efa0122918ccf4de2f6e5fb7dc82321b9313897361d281afc21c16af17533
-SIZE (go/wip_yopass/yopass-11.20.0.g20250523/11.20.0...master.patch) = 43679
+TIMESTAMP = 1762619894
+SHA256 (go/wip_yopass/yopass-12.4.0/jhaals-yopass-12.4.0_GH0.tar.gz) = f193cbef35fc970c1d0e1a3f3a6574241c3531a04ff3bc6cbbb17062a157e23f
+SIZE (go/wip_yopass/yopass-12.4.0/jhaals-yopass-12.4.0_GH0.tar.gz) = 1378964
+SHA256 (go/wip_yopass/yopass-12.4.0/yopass-12.4.0-node_modules.tgz) = 1d234cc4a2aaff2d901d778c8d619d982c0cb1ce6615e2907578900900bf22b7
+SIZE (go/wip_yopass/yopass-12.4.0/yopass-12.4.0-node_modules.tgz) = 40886030
+SHA256 (go/wip_yopass/yopass-12.4.0/go.mod) = 02ff811867dbff1116b129c6ef0bbb97dc42150b3b5a98ef2dee3f1fdb71482f
+SIZE (go/wip_yopass/yopass-12.4.0/go.mod) = 1827
