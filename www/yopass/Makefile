@@ -1,7 +1,7 @@
 PORTNAME=	yopass
-PORTVERSION=	12.4.0
+PORTVERSION=	12.5.0
 CATEGORIES=	wip www textproc
-MASTER_SITES=	https://raw.githubusercontent.com/jhaals/yopass/refs/tags/12.4.0/:go \
+MASTER_SITES=	https://raw.githubusercontent.com/jhaals/yopass/refs/tags/${PORTVERSION}/:go \
 		https://codeload.github.com/${GH_ACCOUNT}/${GH_PROJECT}/tar.gz/${GH_TAG}?dummy=/ \
 		LOCAL/fox/:js
 DISTFILES=	${GH_ACCOUNT}-${GH_PROJECT}-${GH_TAG}_GH0.tar.gz \
@@ -20,7 +20,7 @@ ONLY_FOR_ARCHS=	amd64
 BUILD_DEPENDS=	yarn${NODEJS_SUFFIX}>=0:www/yarn${NODEJS_SUFFIX}
 RUN_DEPENDS=	${LOCALBASE}/bin/memcached:databases/memcached
 
-USES=		go:1.24,modules nodejs:20,build
+USES=		go:1.25,modules nodejs:20,build
 USE_RC_SUBR=	yopass
 
 USE_GITHUB=	nodefault
