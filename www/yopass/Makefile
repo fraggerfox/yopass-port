@@ -1,18 +1,17 @@
 PORTNAME=	yopass
-PORTVERSION=	12.5.0
+PORTVERSION=	14.3.0
 CATEGORIES=	wip www textproc
 MASTER_SITES=	https://raw.githubusercontent.com/jhaals/yopass/refs/tags/${PORTVERSION}/:go \
 		https://codeload.github.com/${GH_ACCOUNT}/${GH_PROJECT}/tar.gz/${GH_TAG}?dummy=/ \
 		LOCAL/fox/:js
-DISTFILES=	${GH_ACCOUNT}-${GH_PROJECT}-${GH_TAG}_GH0.tar.gz \
-		${GH_PROJECT}-${GH_TAG}-node_modules.tgz:js \
+DISTFILES=	${GH_PROJECT}-${GH_TAG}-node_modules.tgz:js \
+		${GH_ACCOUNT}-${GH_PROJECT}-${GH_TAG}_GH0.tar.gz \
 		go.mod:go
 
 MAINTAINER=	fox@FreeBSD.org
 COMMENT=	Share secrets securely with ease
 WWW=		https://yopass.se/
 
-#CONFLICTS_INSTALL=	yopass
 LICENSE=	APACHE20
 
 ONLY_FOR_ARCHS=	amd64
@@ -20,7 +19,7 @@ ONLY_FOR_ARCHS=	amd64
 BUILD_DEPENDS=	yarn${NODEJS_SUFFIX}>=0:www/yarn${NODEJS_SUFFIX}
 RUN_DEPENDS=	${LOCALBASE}/bin/memcached:databases/memcached
 
-USES=		go:1.25,modules nodejs:20,build
+USES=		go:modules nodejs:24,build
 USE_RC_SUBR=	yopass
 
 USE_GITHUB=	nodefault
@@ -51,7 +50,7 @@ post-install:
 	${MKDIR} ${STAGEDIR}/var/run/${PORTNAME}
 
 #
-# To update the opengist-${GH_TAG}-node_modules.tgz archive:
+# To update the yopass-${GH_TAG}-node_modules.tgz archive:
 # 1. Comment out the *-node_modules.tar.gz in DISTFILES and post-extract lines
 # 2. Run 'make makesum regenerate-node_modules-distfile clean'
 # 3. Upload the archive
