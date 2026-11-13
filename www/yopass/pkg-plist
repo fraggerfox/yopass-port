@@ -1,15 +1,20 @@
 bin/yopass
 bin/yopass-server
 etc/rc.d/yopass
-%%WWWDIR%%/public/assets/crypto-IwM54sTV.js
-%%WWWDIR%%/public/assets/i18n-DAAeItQP.js
-%%WWWDIR%%/public/assets/index-BKpe3NUK.css
-%%WWWDIR%%/public/assets/index-DN32Ga7G.js
-%%WWWDIR%%/public/assets/react-DKNyKx05.js
-%%WWWDIR%%/public/assets/rolldown-runtime-C0phanGV.js
-%%WWWDIR%%/public/assets/ui-HsQoSfTr.js
+%%WWWDIR%%/public/apple-touch-icon.png
+%%WWWDIR%%/public/assets/crypto-DtsbUxwX.js
+%%WWWDIR%%/public/assets/i18n-DLn0lwDw.js
+%%WWWDIR%%/public/assets/index-BSwdezRU.css
+%%WWWDIR%%/public/assets/index-ClMU5l_0.js
+%%WWWDIR%%/public/assets/react-BqJ4J_7U.js
+%%WWWDIR%%/public/assets/rolldown-runtime-BrVfq_k5.js
+%%WWWDIR%%/public/assets/ui-CgXOC9O-.js
+%%WWWDIR%%/public/favicon.ico
+%%WWWDIR%%/public/favicon.svg
 %%WWWDIR%%/public/index.html
 %%WWWDIR%%/public/theme-init.js
+%%WWWDIR%%/public/yopass-full-dark.svg
+%%WWWDIR%%/public/yopass-full.svg
 %%WWWDIR%%/public/yopass.svg
 %%WWWDIR%%/yopass-server
 @dir /var/run/yopass

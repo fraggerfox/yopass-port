@@ -1,5 +1,5 @@
 PORTNAME=	yopass
-PORTVERSION=	14.3.0
+PORTVERSION=	16.1.0
 CATEGORIES=	wip www textproc
 MASTER_SITES=	https://raw.githubusercontent.com/jhaals/yopass/refs/tags/${PORTVERSION}/:go \
 		https://codeload.github.com/${GH_ACCOUNT}/${GH_PROJECT}/tar.gz/${GH_TAG}?dummy=/ \
@@ -29,7 +29,7 @@ GH_TAG=		${PORTVERSION}
 
 GO_MODULE=	github.com/jhaals/yopass
 GO_TARGET=	./cmd/yopass ./cmd/yopass-server
-GO_ENV+=	GOTOOLCHAIN=local+path
+GO_ENV+=	GOTOOLCHAIN=local+path GOWORK=off
 GO_MOD_DIST=	github
 
 post-extract:
