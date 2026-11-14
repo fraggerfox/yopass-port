@@ -1,11 +1,10 @@
 bin/yopass
 bin/yopass-server
-etc/rc.d/yopass
 %%WWWDIR%%/public/apple-touch-icon.png
 %%WWWDIR%%/public/assets/crypto-DtsbUxwX.js
 %%WWWDIR%%/public/assets/i18n-DLn0lwDw.js
-%%WWWDIR%%/public/assets/index-BSwdezRU.css
-%%WWWDIR%%/public/assets/index-ClMU5l_0.js
+%%WWWDIR%%/public/assets/index-BK_Qp9QW.css
+%%WWWDIR%%/public/assets/index-HLFliDi3.js
 %%WWWDIR%%/public/assets/react-BqJ4J_7U.js
 %%WWWDIR%%/public/assets/rolldown-runtime-BrVfq_k5.js
 %%WWWDIR%%/public/assets/ui-CgXOC9O-.js
